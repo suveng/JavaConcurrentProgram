@@ -1,0 +1,484 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.3线程池生命周期 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2.4创建线程池.html" />
+    
+    
+    <link rel="prev" href="2.2为什么需要线程池.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../1.线程基础/">
+            
+                <a href="../1.线程基础/">
+            
+                    
+                    1.线程基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../1.线程基础/1.1什么是线程.html">
+            
+                <a href="../1.线程基础/1.1什么是线程.html">
+            
+                    
+                    1.1什么是线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../1.线程基础/1.2线程的分类.html">
+            
+                <a href="../1.线程基础/1.2线程的分类.html">
+            
+                    
+                    1.2线程的分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../1.线程基础/1.3线程的信息.html">
+            
+                <a href="../1.线程基础/1.3线程的信息.html">
+            
+                    
+                    1.3线程的信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../1.线程基础/1.4线程的生命周期.html">
+            
+                <a href="../1.线程基础/1.4线程的生命周期.html">
+            
+                    
+                    1.4线程的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../1.线程基础/1.5线程的状态转换.html">
+            
+                <a href="../1.线程基础/1.5线程的状态转换.html">
+            
+                    
+                    1.5线程的状态转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../1.线程基础/1.6线程优先级.html">
+            
+                <a href="../1.线程基础/1.6线程优先级.html">
+            
+                    
+                    1.6线程优先级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../1.线程基础/1.7线程创建并启动.html">
+            
+                <a href="../1.线程基础/1.7线程创建并启动.html">
+            
+                    
+                    1.7线程创建并启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../1.线程基础/1.8线程中断.html">
+            
+                <a href="../1.线程基础/1.8线程中断.html">
+            
+                    
+                    1.8线程中断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../1.线程基础/1.9优雅停止线程.html">
+            
+                <a href="../1.线程基础/1.9优雅停止线程.html">
+            
+                    
+                    1.9优雅停止线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    2.线程池
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="2.1什么是线程池.html">
+            
+                <a href="2.1什么是线程池.html">
+            
+                    
+                    2.1什么是线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="2.2为什么需要线程池.html">
+            
+                <a href="2.2为什么需要线程池.html">
+            
+                    
+                    2.2为什么需要线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="2.3线程池生命周期.html">
+            
+                <a href="2.3线程池生命周期.html">
+            
+                    
+                    2.3线程池生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="2.4创建线程池.html">
+            
+                <a href="2.4创建线程池.html">
+            
+                    
+                    2.4创建线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="2.5为什么不建议使用Executors创建线程池.html">
+            
+                <a href="2.5为什么不建议使用Executors创建线程池.html">
+            
+                    
+                    2.5为什么不建议使用Executors创建线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.3线程池生命周期</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x9996;&#x5148;&#x7EBF;&#x7A0B;&#x6C60;&#x662F;&#x6709;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x8FD9;&#x4E9B;&#x72B6;&#x6001;&#x6807;&#x8BC6;&#x8FD9;&#x7EBF;&#x7A0B;&#x6C60;&#x5185;&#x90E8;&#x7684;&#x4E00;&#x4E9B;&#x8FD0;&#x884C;&#x60C5;&#x51B5;&#xFF0C;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x5F00;&#x542F;&#x5230;&#x5173;&#x95ED;&#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x6C60;&#x72B6;&#x6001;&#x7684;&#x4E00;&#x4E2A;&#x6D41;&#x8F6C;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x7EBF;&#x7A0B;&#x6C60;&#x5171;&#x6709;&#x4E94;&#x79CD;&#x72B6;&#x6001;&#xFF1A;</p>
+<p><img src="http://ww1.sinaimg.cn/large/006jIRTegy1g2plj88tptj30u009njrc.jpg" alt="&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x72B6;&#x6001;"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x72B6;&#x6001;</th>
+<th style="text-align:left">&#x542B;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">RUNNING</td>
+<td style="text-align:left">&#x8FD0;&#x884C;&#x72B6;&#x6001;&#xFF0C;&#x8BE5;&#x72B6;&#x6001;&#x4E0B;&#x7EBF;&#x7A0B;&#x6C60;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x65B0;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x963B;&#x585E;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1; &#x6267;&#x884C; shutdown &#x65B9;&#x6CD5;&#x53EF;&#x8FDB;&#x5165; SHUTDOWN &#x72B6;&#x6001; &#x6267;&#x884C; shutdownNow &#x65B9;&#x6CD5;&#x53EF;&#x8FDB;&#x5165; STOP &#x72B6;&#x6001;</td>
+</tr>
+<tr>
+<td style="text-align:left">SHUTDOWN</td>
+<td style="text-align:left">&#x5F85;&#x5173;&#x95ED;&#x72B6;&#x6001;&#xFF0C;&#x4E0D;&#x518D;&#x63A5;&#x53D7;&#x65B0;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x7EE7;&#x7EED;&#x5904;&#x7406;&#x963B;&#x585E;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1; &#x5F53;&#x963B;&#x585E;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x4E3A;&#x7A7A;&#xFF0C;&#x5E76;&#x4E14;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x6570;&#x4E3A;0&#x65F6;&#xFF0C;&#x8FDB;&#x5165; TIDYING &#x72B6;&#x6001;</td>
+</tr>
+<tr>
+<td style="text-align:left">STOP</td>
+<td style="text-align:left">&#x505C;&#x6B62;&#x72B6;&#x6001;&#xFF0C;&#x4E0D;&#x63A5;&#x6536;&#x65B0;&#x4EFB;&#x52A1;&#xFF0C;&#x4E5F;&#x4E0D;&#x5904;&#x7406;&#x963B;&#x585E;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x5C1D;&#x8BD5;&#x7ED3;&#x675F;&#x6267;&#x884C;&#x4E2D;&#x7684;&#x4EFB;&#x52A1; &#x5F53;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x6570;&#x4E3A;0&#x65F6;&#xFF0C;&#x8FDB;&#x5165; TIDYING &#x72B6;&#x6001;</td>
+</tr>
+<tr>
+<td style="text-align:left">TIDYING</td>
+<td style="text-align:left">&#x6574;&#x7406;&#x72B6;&#x6001;&#xFF0C;&#x6B64;&#x65F6;&#x4EFB;&#x52A1;&#x90FD;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x5E76;&#x4E14;&#x4E5F;&#x6CA1;&#x6709;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B; &#x6267;&#x884C; terminated &#x65B9;&#x6CD5;&#x540E;&#x8FDB;&#x5165; TERMINATED &#x72B6;&#x6001;</td>
+</tr>
+<tr>
+<td style="text-align:left">TERMINATED</td>
+<td style="text-align:left">&#x7EC8;&#x6B62;&#x72B6;&#x6001;&#xFF0C;&#x6B64;&#x65F6;&#x7EBF;&#x7A0B;&#x6C60;&#x5B8C;&#x5168;&#x7EC8;&#x6B62;&#x4E86;&#xFF0C;&#x5E76;&#x5B8C;&#x6210;&#x4E86;&#x6240;&#x6709;&#x8D44;&#x6E90;&#x7684;&#x91CA;&#x653E;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x6765;&#x6E90;">&#x6765;&#x6E90;:</h2>
+<p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1556975644&amp;ver=1586&amp;signature=dRSIBojcV5gEOuPoUG*3ai*rB9StgldyBx5p6JUw4aLaX7kzvGXcV36iGnvhawKKAKRmupgc6sWUHL2HmHrxuwjRgNAwRVU6Htl0l9hGiu7JaREbZXqMb*gL4A0qGSkb&amp;new=1" target="_blank">&#x9005;&#x5F08;&#x9010;&#x7801;</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2.2为什么需要线程池.html" class="navigation navigation-prev " aria-label="Previous page: 2.2为什么需要线程池">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2.4创建线程池.html" class="navigation navigation-next " aria-label="Next page: 2.4创建线程池">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.3线程池生命周期","level":"1.3.3","depth":2,"next":{"title":"2.4创建线程池","level":"1.3.4","depth":2,"path":"2.线程池/2.4创建线程池.md","ref":"2.线程池/2.4创建线程池.md","articles":[]},"previous":{"title":"2.2为什么需要线程池","level":"1.3.2","depth":2,"path":"2.线程池/2.2为什么需要线程池.md","ref":"2.线程池/2.2为什么需要线程池.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"2.线程池/2.3线程池生命周期.md","mtime":"2019-05-04T14:13:31.649Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-04T14:15:47.182Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

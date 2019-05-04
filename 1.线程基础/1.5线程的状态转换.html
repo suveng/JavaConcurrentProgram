@@ -1,0 +1,519 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1.5线程的状态转换 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="1.6线程优先级.html" />
+    
+    
+    <link rel="prev" href="1.4线程的生命周期.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    1.线程基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="1.1什么是线程.html">
+            
+                <a href="1.1什么是线程.html">
+            
+                    
+                    1.1什么是线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="1.2线程的分类.html">
+            
+                <a href="1.2线程的分类.html">
+            
+                    
+                    1.2线程的分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="1.3线程的信息.html">
+            
+                <a href="1.3线程的信息.html">
+            
+                    
+                    1.3线程的信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="1.4线程的生命周期.html">
+            
+                <a href="1.4线程的生命周期.html">
+            
+                    
+                    1.4线程的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.5" data-path="1.5线程的状态转换.html">
+            
+                <a href="1.5线程的状态转换.html">
+            
+                    
+                    1.5线程的状态转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="1.6线程优先级.html">
+            
+                <a href="1.6线程优先级.html">
+            
+                    
+                    1.6线程优先级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="1.7线程创建并启动.html">
+            
+                <a href="1.7线程创建并启动.html">
+            
+                    
+                    1.7线程创建并启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="1.8线程中断.html">
+            
+                <a href="1.8线程中断.html">
+            
+                    
+                    1.8线程中断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="1.9优雅停止线程.html">
+            
+                <a href="1.9优雅停止线程.html">
+            
+                    
+                    1.9优雅停止线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../2.线程池/">
+            
+                <a href="../2.线程池/">
+            
+                    
+                    2.线程池
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../2.线程池/2.1什么是线程池.html">
+            
+                <a href="../2.线程池/2.1什么是线程池.html">
+            
+                    
+                    2.1什么是线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../2.线程池/2.2为什么需要线程池.html">
+            
+                <a href="../2.线程池/2.2为什么需要线程池.html">
+            
+                    
+                    2.2为什么需要线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../2.线程池/2.3线程池生命周期.html">
+            
+                <a href="../2.线程池/2.3线程池生命周期.html">
+            
+                    
+                    2.3线程池生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../2.线程池/2.4创建线程池.html">
+            
+                <a href="../2.线程池/2.4创建线程池.html">
+            
+                    
+                    2.4创建线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../2.线程池/2.5为什么不建议使用Executors创建线程池.html">
+            
+                <a href="../2.线程池/2.5为什么不建议使用Executors创建线程池.html">
+            
+                    
+                    2.5为什么不建议使用Executors创建线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >1.5线程的状态转换</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x5728;Java&#x4E2D;&#xFF0C;&#x7EBF;&#x7A0B;&#x53EA;&#x80FD;&#x6709;&#x8FD9;6&#x79CD;&#x4E2D;&#x7684;&#x4E00;&#x79CD;&#x72B6;&#x6001;&#xFF1A; new, runnable, blocked, waiting, time waiting, &#x6216; terminated.</p>
+<p>&#x5728;JDK&#x6E90;&#x7801;&#x4E2D;&#x6709;&#x4E2A;&#x5185;&#x90E8;&#x679A;&#x4E3E;&#x7C7B;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-java">    / **
+      *&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x3002; &#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x5904;&#x4E8E;&#x4EE5;&#x4E0B;&#x72B6;&#x6001;&#x4E4B;&#x4E00;&#xFF1A;
+      * #NEW
+      *&#x5C1A;&#x672A;&#x542F;&#x52A8;&#x7684;&#x7EBF;&#x7A0B;&#x5904;&#x4E8E;&#x6B64;&#x72B6;&#x6001;&#x3002;
+      * #RUNNABLE
+      *&#x5728;Java&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x6267;&#x884C;&#x7684;&#x7EBF;&#x7A0B;&#x5904;&#x4E8E;&#x6B64;&#x72B6;&#x6001;
+      * #BLOCKED
+      *&#x88AB;&#x963B;&#x585E;&#x7B49;&#x5F85;&#x76D1;&#x89C6;&#x5668;&#x9501;&#x5B9A;&#x7684;&#x7EBF;&#x7A0B;
+      *&#x5904;&#x4E8E;&#x8FD9;&#x79CD;&#x72B6;&#x6001;
+      *#WAITING
+      *&#x4E00;&#x4E2A;&#x65E0;&#x9650;&#x671F;&#x7B49;&#x5F85;&#x53E6;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;
+      *&#x6267;&#x884C;&#x7279;&#x5B9A;&#x64CD;&#x4F5C;&#x5904;&#x4E8E;&#x6B64;&#x72B6;&#x6001;&#x3002;
+      * #TIMED_WAITING
+      *&#x6B63;&#x5728;&#x7B49;&#x5F85;&#x53E6;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x7684;&#x7EBF;&#x7A0B;
+      *&#x5728;&#x6307;&#x5B9A;&#x7684;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x5185;&#x5904;&#x4E8E;&#x6B64;&#x72B6;&#x6001;&#x3002;
+      * #TERMINATED
+      *&#x5DF2;&#x9000;&#x51FA;&#x7684;&#x7EBF;&#x7A0B;&#x5904;&#x4E8E;&#x6B64;&#x72B6;&#x6001;&#x3002;
+      *&#x7EBF;&#x7A0B;&#x5728;&#x7ED9;&#x5B9A;&#x65F6;&#x95F4;&#x70B9;&#x53EA;&#x80FD;&#x5904;&#x4E8E;&#x4E00;&#x79CD;&#x72B6;&#x6001;&#x3002;
+      *&#x8FD9;&#x4E9B;&#x72B6;&#x6001;&#x662F;&#x865A;&#x62DF;&#x673A;&#x72B6;&#x6001;&#xFF0C;&#x4E0D;&#x53CD;&#x6620;
+      *&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x3002;
+      * @since 1.5
+      * @see #getState
+      * /
+    public enum State {
+        /**
+         * &#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x4E4B;&#x540E;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x6CA1;&#x6709;&#x542F;&#x52A8;(not yet started)&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x5B83;&#x7684;&#x72B6;&#x6001;&#x5C31;&#x662F;NEW
+         */
+        NEW,
+
+        /**
+         *RUNNABLE: &#x6B63;&#x5728;Java&#x865A;&#x62DF;&#x673A;&#x4E0B;&#x8DD1;&#x4EFB;&#x52A1;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#x72B6;&#x6001;&#x3002;&#x5728;RUNNABLE&#x72B6;&#x6001;&#x4E0B;&#x7684;&#x7EBF;&#x7A0B;&#x53EF;&#x80FD;&#x4F1A;&#x5904;&#x4E8E;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C; &#x56E0;&#x4E3A;        *&#x5B83;&#x6B63;&#x5728;&#x7B49;&#x5F85;&#x4E00;&#x4E9B;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x7684;&#x91CA;&#x653E;&#xFF0C;&#x6BD4;&#x5982;IO
+         */
+        RUNNABLE,
+
+        /**
+         *BLOCKED: &#x963B;&#x585E;&#x72B6;&#x6001;&#xFF0C;&#x7B49;&#x5F85;&#x9501;&#x7684;&#x91CA;&#x653E;&#xFF0C;&#x6BD4;&#x5982;&#x7EBF;&#x7A0B;A&#x8FDB;&#x5165;&#x4E86;&#x4E00;&#x4E2A;synchronized&#x65B9;&#x6CD5;&#xFF0C;
+         *&#x7EBF;&#x7A0B;B&#x4E5F;&#x60F3;&#x8FDB;&#x5165;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x9501;&#x5DF2;&#x7ECF;&#x88AB;&#x7EBF;&#x7A0B;A&#x83B7;&#x53D6;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x7EBF;&#x7A0B;B&#x5C31;&#x5904;&#x4E8E;BLOCKED&#x72B6;&#x6001;
+         */
+        BLOCKED,
+
+        /**
+         *WAITING: &#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x5904;&#x4E8E;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x7531;&#x4E8E;&#x6267;&#x884C;&#x4E86;3&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x65B9;&#x6CD5;&#x3002; 
+         *1. Object&#x7684;wait&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x4F7F;&#x7528;timeout&#x53C2;&#x6570;; 
+         *2. Thread&#x7684;join&#x65B9;&#x6CD5;&#xFF0C;&#x6CA1;&#x6709;&#x4F7F;&#x7528;timeout&#x53C2;&#x6570; 
+         *3. LockSupport&#x7684;park&#x65B9;&#x6CD5;&#x3002; &#x5904;&#x4E8E;waiting&#x72B6;&#x6001;&#x7684;&#x7EBF;&#x7A0B;&#x4F1A;&#x7B49;&#x5F85;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#x7279;&#x6B8A;&#x7684;&#x884C;&#x4E3A;&#x3002; 
+         *&#x518D;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;wait&#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x5C31;&#x4F1A;&#x5904;&#x4E8E;waiting&#x72B6;&#x6001;
+         *&#x76F4;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;notify&#x6216;&#x8005;notifyAll&#x65B9;&#x6CD5;&#x540E;&#x624D;&#x4F1A;&#x89E3;&#x9664;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;
+         */
+        WAITING,
+
+        /**
+         *TIMED_WAITING: &#x6709;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x7684;&#x7B49;&#x5F85;&#x72B6;&#x6001;
+         * &#x6BD4;&#x5982;&#x8C03;&#x7528;&#x4E86;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x6307;&#x5B9A;&#x4E86;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#xFF0C;&#x7EBF;&#x7A0B;&#x5C31;&#x4F1A;&#x5904;&#x4E8E;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x3002; 
+         * 1. Thread.sleep&#x65B9;&#x6CD5; 
+         * 2. Object&#x7684;wait&#x65B9;&#x6CD5;&#xFF0C;&#x5E26;&#x6709;&#x65F6;&#x95F4; 
+         * 3. Thread.join&#x65B9;&#x6CD5;&#xFF0C;&#x5E26;&#x6709;&#x65F6;&#x95F4; 
+         * 4. LockSupport&#x7684;parkNanos&#x65B9;&#x6CD5;&#xFF0C;&#x5E26;&#x6709;&#x65F6;&#x95F4; 
+         * 5. LockSupport&#x7684;parkUntil&#x65B9;&#x6CD5;&#xFF0C;&#x5E26;&#x6709;&#x65F6;&#x95F4;
+         */
+        TIMED_WAITING,
+
+        /**
+         *  &#x7EBF;&#x7A0B;&#x4E2D;&#x6B62;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x5B8C;&#x6574;&#x5730;&#x6267;&#x884C;&#x4E86;&#x5B83;&#x7684;&#x4EFB;&#x52A1;
+         */
+        TERMINATED;
+    }
+</code></pre>
+<p><img src="https://ws1.sinaimg.cn/large/006jIRTegy1fz8mey5cyrj30u90hy40g.jpg" alt="Java&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x8F6C;&#x6362;"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1.4线程的生命周期.html" class="navigation navigation-prev " aria-label="Previous page: 1.4线程的生命周期">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="1.6线程优先级.html" class="navigation navigation-next " aria-label="Next page: 1.6线程优先级">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1.5线程的状态转换","level":"1.2.5","depth":2,"next":{"title":"1.6线程优先级","level":"1.2.6","depth":2,"path":"1.线程基础/1.6线程优先级.md","ref":"1.线程基础/1.6线程优先级.md","articles":[]},"previous":{"title":"1.4线程的生命周期","level":"1.2.4","depth":2,"path":"1.线程基础/1.4线程的生命周期.md","ref":"1.线程基础/1.4线程的生命周期.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"1.线程基础/1.5线程的状态转换.md","mtime":"2019-05-04T14:13:31.649Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-04T14:15:47.182Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
